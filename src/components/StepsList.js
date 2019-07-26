@@ -13,7 +13,10 @@ export default function StepsList({ walks }) {
         <tr>
           <td>{walk.date}</td>
           <td>{walk.km}</td>
-          <td><i class="fas fa-pencil-alt"></i></td>
+          <td>
+            <i class="material-icons">border_color</i>
+            <i class="material-icons">delete</i>
+          </td>
         </tr>
       ))}
     </table>

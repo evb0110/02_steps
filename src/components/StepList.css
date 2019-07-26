@@ -10,3 +10,10 @@ td,
 th {
   padding: 8px;
 }
+
+.material-icons {
+  color: #aaa;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  cursor: pointer;
+}
