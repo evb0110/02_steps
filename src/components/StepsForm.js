@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Input from './Input';
 import StepsList from './StepsList';
+
+import sortArray from '../helpers/sortArray';
 const uuidv1 = require('uuid/v1');
 
 export default class StepsForm extends Component {
@@ -18,11 +20,24 @@ export default class StepsForm extends Component {
     this.onDelete = this.onDelete.bind(this);
   }
 
-  onEnter(walk) {
-    const id = uuidv1();
-    this.setState({ walks: [{ ...walk, id }, ...this.state.walks] });
-  }
 
+  onEnter(newWalk) {
+    const id = uuidv1();
+    const walks = this.state.walks;
+    const newWalks = [...walks];
+    const dates = walks.map(walk => walk.date);
+    if (dates.includes(newWalk.date)) {
+      newWalks.forEach(walk => {
+        if (walk.date === newWalk.date) {
+          walk.km = +walk.km + +newWalk.km
+        }
+      })
+    } else {
+      newWalks.push({...newWalk, id })
+    }
+
+    this.setState({ walks: sortArray(newWalks)});
+  }
 
   onDelete(id) {
     console.log(id);

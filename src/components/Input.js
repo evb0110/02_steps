@@ -8,6 +8,8 @@ export default function Input({ onEnter }) {
     km: '',
   });
 
+  const dateInput = React.createRef();
+
   const onAdd = (value, e) => {
     setInput({
       ...input,
@@ -15,13 +17,15 @@ export default function Input({ onEnter }) {
     });
   };
 
-  const onOK = () => {
+  const onOK = (e) => {
+    e.preventDefault();
     onEnter(input);
     setInput({ date: '', km: '' });
+    dateInput.current.focus();
   };
 
   return (
-    <div>
+    <form>
       <table className="input-table">
         <tbody>
           <tr>
@@ -31,7 +35,7 @@ export default function Input({ onEnter }) {
           </tr>
           <tr>
             <td>
-              <input onChange={e => onAdd('date', e)} value={input.date} />
+              <input onChange={e => onAdd('date', e)} value={input.date} ref={dateInput} />
             </td>
             <td>
               <input onChange={e => onAdd('km', e)} value={input.km} />
@@ -44,6 +48,6 @@ export default function Input({ onEnter }) {
           </tr>
         </tbody>
       </table>
-    </div>
+    </form>
   );
 }
