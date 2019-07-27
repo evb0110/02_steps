@@ -36,12 +36,16 @@ export default class StepsForm extends Component {
       newWalks.push({...newWalk, id })
     }
 
+    newWalks.forEach(walk => {
+      const km = +walk.km;
+      if (Number.isInteger(km)) return;
+      walk.km = km.toFixed(1);
+    })
+
     this.setState({ walks: sortArray(newWalks)});
   }
 
   onDelete(id) {
-    console.log(id);
-
     const walks = this.state.walks;
     const newWalks = walks.filter(walk => walk.id !== id);
     this.setState({ walks: newWalks });

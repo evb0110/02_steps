@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import isInvalid from '../helpers/isInvalid';
 import './Input.css';
 
 export default function Input({ onEnter }) {
@@ -17,8 +17,11 @@ export default function Input({ onEnter }) {
     });
   };
 
-  const onOK = (e) => {
+  const onOK = e => {
     e.preventDefault();
+    if (isInvalid(input)) {
+      return alert('invalid input');
+    }
     onEnter(input);
     setInput({ date: '', km: '' });
     dateInput.current.focus();
@@ -35,12 +38,16 @@ export default function Input({ onEnter }) {
           </tr>
           <tr>
             <td>
-              <input onChange={e => onAdd('date', e)} value={input.date} ref={dateInput} />
+              <input
+                onChange={e => onAdd('date', e)}
+                value={input.date}
+                ref={dateInput}
+              />
             </td>
             <td>
               <input onChange={e => onAdd('km', e)} value={input.km} />
             </td>
-            <td>
+            <td className="container-button">
               <button className="input-button" onClick={onOK}>
                 OK
               </button>
