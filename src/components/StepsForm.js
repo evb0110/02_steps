@@ -11,10 +11,20 @@ export default class StepsForm extends Component {
     ],
   };
 
+  constructor() {
+    super();
+    this.onEnter = this.onEnter.bind(this);
+  }
+
+  onEnter(walk) {
+    console.log(walk)
+    this.setState({walks: [walk, ...this.state.walks]})
+  }
+
   render() {
     return (
       <div>
-        <Input />
+        <Input onEnter={this.onEnter} />
         <StepsList walks={this.state.walks} />
       </div>
     );
