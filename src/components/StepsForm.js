@@ -42,7 +42,7 @@ export default class StepsForm extends Component {
       walk.km = km.toFixed(1);
     })
 
-    this.setState({ walks: sortArray(newWalks)});
+    this.setState({ walks: newWalks});
   }
 
   onDelete(id) {
@@ -55,7 +55,7 @@ export default class StepsForm extends Component {
     return (
       <div>
         <Input onEnter={this.onEnter} />
-        <StepsList onDelete={this.onDelete} walks={this.state.walks} />
+        <StepsList onDelete={this.onDelete} walks={sortArray(this.state.walks)} />
       </div>
     );
   }

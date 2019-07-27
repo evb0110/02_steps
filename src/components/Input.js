@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import isInvalid from '../helpers/isInvalid';
 import './Input.css';
 
@@ -58,3 +59,7 @@ export default function Input({ onEnter }) {
     </form>
   );
 }
+
+Input.propTypes = {
+  onEnter: PropTypes.func,
+};
