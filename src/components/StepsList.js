@@ -1,24 +1,22 @@
 import React from 'react';
+import StepsRow from './StepsRow';
+
 import './StepList.css';
 
-export default function StepsList({ walks }) {
+export default function StepsList(props) {
+  const handleDelete = (id) => props.onDelete(id);
   return (
     <table>
-      <tr>
-        <th>Дата (ДД.ММ.ГГ)</th>
-        <th>Пройдено км</th>
-        <th>Действия</th>
-      </tr>
-      {walks.map(walk => (
+      <tbody>
         <tr>
-          <td>{walk.date}</td>
-          <td>{walk.km}</td>
-          <td>
-            <i class="material-icons">border_color</i>
-            <i class="material-icons">delete</i>
-          </td>
+          <th>Дата (ДД.ММ.ГГ)</th>
+          <th>Пройдено км</th>
+          <th>Действия</th>
         </tr>
-      ))}
+        {props.walks.map(walk => (
+          <StepsRow handleDelete={handleDelete} key={walk.id} id={walk.id} walk={walk} />
+        ))}
+      </tbody>
     </table>
   );
 }
