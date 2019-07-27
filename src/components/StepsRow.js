@@ -1,14 +1,16 @@
 import React from 'react';
+import './StepsRow.css'
 
 export default function StepsRow({ walk, handleDelete }) {
   const onDelete = () => handleDelete(walk.id)
   return (
     <tr key={walk.id}>
-      <td>{walk.date}</td>
-      <td>{walk.km}</td>
-      <td>
-        <i class="material-icons">border_color</i>
-        <i class="material-icons" onClick={onDelete}>delete</i>
+      <td className="container-date">{walk.date}</td>
+      <td className="container-km">{walk.km}</td>
+      <td className="container-delete">
+        <i class="material-icons" onClick={onDelete}><i class="material-icons">
+        delete_forever
+        </i></i>
       </td>
     </tr>
   );
