@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import deleteIcon from '../assets/delete.svg';
 import './StepsRow.css';
 
 export default function StepsRow({ walk, handleDelete }) {
@@ -9,9 +10,9 @@ export default function StepsRow({ walk, handleDelete }) {
       <td className="container-date">{walk.date}</td>
       <td className="container-km">{walk.km}</td>
       <td className="container-delete">
-        <i class="material-icons" onClick={onDelete}>
-          <i class="material-icons">delete_forever</i>
-        </i>
+        <span onClick={onDelete}>
+          <img className="delete-icon"  src={deleteIcon} alt="delete icon" />
+        </span>
       </td>
     </tr>
   );
