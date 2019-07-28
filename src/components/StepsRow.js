@@ -6,7 +6,7 @@ import './StepsRow.css';
 export default function StepsRow({ walk, handleDelete }) {
   const onDelete = () => handleDelete(walk.id);
   return (
-    <tr key={walk.id}>
+    <tr key={walk.id} className="container-row">
       <td className="container-date">{walk.date}</td>
       <td className="container-km">{walk.km}</td>
       <td className="container-delete">
