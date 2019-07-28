@@ -14,3 +14,16 @@
   transform: scale(1.3);
   cursor: pointer;
 }
+
+.container-row {
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
