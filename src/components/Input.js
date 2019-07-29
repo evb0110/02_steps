@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isInvalid from '../helpers/isInvalid';
 import './Input.css';
@@ -9,7 +9,7 @@ export default function Input({ onEnter }) {
     km: '',
   });
 
-  const dateInput = React.createRef();
+  const dateInput = useRef();
 
   const onAdd = (value, e) => {
     setInput({
